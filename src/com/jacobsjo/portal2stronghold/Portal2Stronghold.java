@@ -13,6 +13,7 @@ import java.util.Random;
 
 import com.jacobsjo.portal2stronghold.MapGenStronghold.Start;
 
+
 public class Portal2Stronghold {
 	public static void main(String[] args){
 
@@ -83,18 +84,16 @@ public class Portal2Stronghold {
 //						.intersectsWith(var4, var5, var4 + 15, var5 + 15)){
 					
 					
-				int maxX = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().maxX;
-				int maxZ = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().maxZ;
-				int minX = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().minX;
-				int minZ = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().minZ;
+//				int maxX = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().maxX;
+//				int maxZ = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().maxZ;
+//				int minX = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().minX;
+//				int minZ = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().minZ;
 				
-			    if (maxX >= var4 && maxX <= var4 + 15 && maxZ >= var5 && maxZ <= var5 + 15){
+//			    if (maxX >= var4 && maxX <= var4 + 15 && maxZ >= var5 && maxZ <= var5 + 15){
 					
-//				}
-					
-//				int Chunkx = ((((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().minX) + 8) >> 4;
-//				int Chunkz = ((((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().minZ) + 8) >> 4;
-//				if (Chunkx == PortalChunkX && Chunkz == PortalChunkZ){
+				int Chunkx = ((((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getPosition().x) - 8) >> 4;
+				int Chunkz = ((((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getPosition().z) - 8) >> 4;
+				if (Chunkx == PortalChunkX && Chunkz == PortalChunkZ){
 					Random c = new Random();
 					c.setSeed(worldSeed);
 					double d1 = c.nextDouble() * 3.141592653589793D * 2.0D;
