@@ -14,3 +14,6 @@ there will be multiple lines in the output file. If there is none, the won't be 
 
 As said above this Program sadly isn't quite correct, as the Portal-Room often generates between Chunks (or the Chunks moved by 8) and
 I currently don't know how to correctly determine the generating Chunk.
+
+
+Plese note that the code in this Reposetory is not completly written by me and contains some decompiled Minecraft code. (Deopfusctation provided by MCP) and was than edited by me (basicly removing a lot of code from the files)
