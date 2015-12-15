@@ -9,9 +9,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Iterator;
 import java.util.Random;
 
 import com.jacobsjo.portal2stronghold.MapGenStronghold.Start;
+import com.jacobsjo.portal2stronghold.StructureStrongholdPieces.Stronghold;
 
 
 public class Portal2Stronghold {
@@ -90,20 +92,26 @@ public class Portal2Stronghold {
 //				int minZ = ((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getBoundingBox().minZ;
 				
 //			    if (maxX >= var4 && maxX <= var4 + 15 && maxZ >= var5 && maxZ <= var5 + 15){
-					
-				int Chunkx = ((((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getPosition().x) - 8) >> 4;
-				int Chunkz = ((((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getPosition().z) - 8) >> 4;
-				if (Chunkx == PortalChunkX && Chunkz == PortalChunkZ){
-					Random c = new Random();
-					c.setSeed(worldSeed);
-					double d1 = c.nextDouble() * 3.141592653589793D * 2.0D;
-					double d2 = (1.25D + c.nextDouble()) * 32.0D;
-					int k = (int)Math.round(Math.cos(d1) * d2);
-					int m = (int)Math.round(Math.sin(d1) * d2);
-					double distance = ((double) Math.round(Math.sqrt(Math.pow((x - k),2) + Math.pow((z-m),2)) * 100)) / 100;
-					System.out.println(worldSeed + " " + filledCnt + " " + x + " " + z);
-					out.write(worldSeed + " " + filledCnt + " " + x + " " + z);
-					out.newLine();
+				
+		        Iterator components = strongholdStart.components.iterator();
+
+		        while (components.hasNext())
+		        {
+		            StructureComponent component = (StructureComponent)components.next();
+
+		            if (component.getBoundingBox().intersectsWith(var4, var5, var4 + 15, var5 + 15))  // TODO: Liquid in BB
+		            {
+		            	if (component instanceof StructureStrongholdPieces.PortalRoom){
+		    				int Chunkx = ((((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getPosition().x) - 8) >> 4;
+		    				int Chunkz = ((((StructureStrongholdPieces.Stairs2)strongholdStart.getComponents().get(0)).strongholdPortalRoom.getPosition().z) - 8) >> 4;
+		    				if (Chunkx == PortalChunkX && Chunkz == PortalChunkZ){
+		    					System.out.println(worldSeed + " " + filledCnt + " " + x + " " + z);
+		    					out.write(worldSeed + " " + filledCnt + " " + x + " " + z);
+		    					out.newLine();
+		    				}
+		            	}
+	            		break;
+		            }
 				}
 			}
 		}		
